@@ -55,7 +55,8 @@ before_action :find_movie_and_check_permission, only: [:edit, :update, :destroy]
   end
 
   def find_movie_and_check_permission
-    if @movie = Movie.find(params[:id])
+    @movie = Movie.find(params[:id])
+    if current_user != @movie.user
       redirect_to root_path, alert: "滚粗！"
     end
   end
