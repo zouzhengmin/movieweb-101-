@@ -1,10 +1,10 @@
 <div class="col-md-12">
-
-  <% if current_user %>
+  <% if current_user && current_user == @movie.user %>
   <div class="movie">
     <%= link_to("编辑", edit_movie_path(@movie), class:"btn btn-primary pull-right") %>
   </div>
   <% end %>
+
 
   <h2> <%= @movie.title %></h2>
   <p> <%= @movie.description %></p>
