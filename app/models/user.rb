@@ -6,4 +6,6 @@ class User < ApplicationRecord
 
   has_many :movies
   has_many :comments
+  has_many :movieusergroups
+  has_many :participated_movies, :through => :movieusergroups, :source => :movie
 end
