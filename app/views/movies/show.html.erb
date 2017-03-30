@@ -1,12 +1,32 @@
 <div class="col-md-12">
-  <% if current_user && current_user == @movie.user %>
   <div class="movie">
+    <%= link_to("写个评论", new_movie_comment_path(@movie), class:"btn btn-default pull-right")%>
+    <% if current_user && current_user == @movie.user %>
     <%= link_to("编辑", edit_movie_path(@movie), class:"btn btn-primary pull-right") %>
   </div>
   <% end %>
 
-
   <h2> <%= @movie.title %></h2>
   <p> <%= @movie.description %></p>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>影评内容</th>
+        <th>发布者</th>
+        <th>发布时间</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @comments.each do |comment| %>
+      <tr>
+        <td><%= comment.content%></td>
+        <td><%= comment.user.email%></td>
+        <td><%= comment.created_at%></td>
+      </tr>
+      <% end %>
+
+    </tbody>
+  </table>
 
 </div>

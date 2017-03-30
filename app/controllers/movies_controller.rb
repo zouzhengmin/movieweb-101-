@@ -12,6 +12,7 @@ before_action :find_movie_and_check_permission, only: [:edit, :update, :destroy]
 
   def show
     @movie = Movie.find(params[:id])
+    @comments = @movie.comments
   end
 
   def edit
