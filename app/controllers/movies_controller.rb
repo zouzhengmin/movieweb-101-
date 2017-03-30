@@ -12,7 +12,7 @@ before_action :find_movie_and_check_permission, only: [:edit, :update, :destroy]
 
   def show
     @movie = Movie.find(params[:id])
-    @comments = @movie.comments.recent
+    @comments = @movie.comments.recent.paginate(:page => params[:page], :per_page => 5)
   end
 
   def edit
