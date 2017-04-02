@@ -15,7 +15,7 @@
     <tr>
       <td>#</td>
       <td><%= comment.content %></td>
-      <td><%= comment.movie.title%></td>
+      <td><%= link_to(comment.movie.title, account_movies_path)%></td>
       <td><%= comment.created_at%></td>
       <td><%= comment.updated_at%></td>
     </tr>
