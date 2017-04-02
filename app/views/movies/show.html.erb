@@ -1,5 +1,14 @@
 <div class="col-md-12">
   <div class="movie">
+
+    <span class= "pull-right">
+      <% if current_user && current_user.is_member_of?(@movie) %>
+        <label class="label label-success" > 我是群组成员 </label>
+      <% else %>
+        <lable class="label label-warning"> 还不是群组成员 </label>
+      <% end %>
+    </span>
+<br>
     <%= link_to("写个评论", new_movie_comment_path(@movie), class:"btn btn-default pull-right")%>
     <% if current_user && current_user == @movie.user %>
     <%= link_to("编辑", edit_movie_path(@movie), class:"btn btn-primary pull-right") %>

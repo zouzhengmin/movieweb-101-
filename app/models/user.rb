@@ -8,4 +8,10 @@ class User < ApplicationRecord
   has_many :comments
   has_many :movieusergroups
   has_many :participated_movies, :through => :movieusergroups, :source => :movie
+
+  def is_member_of?(movie)
+    participated_movies.include?(movie)
+  end
+
+
 end
