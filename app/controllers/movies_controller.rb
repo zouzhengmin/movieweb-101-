@@ -22,6 +22,7 @@ before_action :find_movie_and_check_permission, only: [:edit, :update, :destroy]
   def create
     @movie = Movie.new(movie_params)
     @movie.user = current_user
+    @movie.user.join!(@movie)
     if @movie.save
       redirect_to movies_path
     else
