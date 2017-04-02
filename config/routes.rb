@@ -6,7 +6,12 @@ Rails.application.routes.draw do
       post :join
       post :quit
     end
-    resources :comments
   end
+
+  namespace :account do
+    resources :movies
+  end
+
+    resources :comments
   root 'movies#index'
 end
