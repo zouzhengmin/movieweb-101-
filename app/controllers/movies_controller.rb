@@ -49,6 +49,28 @@ before_action :find_movie_and_check_permission, only: [:edit, :update, :destroy]
     redirect_to movies_path, alert: '电影已删除。'
   end
 
+  def join
+    @movie = Movie.find(params[:id])
+    if !current_user.is_member_of?(@movie)
+      current_user.join!(@movie)
+      flash[:notice] = "已加入群组!"
+    else
+      flash[:notice] = "你已是本组成员!"
+    end
+      redirect_to movie_path(@movie)
+  end
+
+  def quit
+    @movie = Movie.find(params[:id])
+    if current_user.is_member_of?(@movie)
+      current_user.quit!(@movie)
+      flash[:notice] ="已退出群组！"
+    else
+      flash[:notice] ="你不是群组成员！"
+    end
+      redirect_to movie_path(@movie)
+  end
+
   private
 
   def movie_params
