@@ -50,24 +50,24 @@ before_action :find_movie_and_check_permission, only: [:edit, :update, :destroy]
     redirect_to movies_path, alert: '电影已删除。'
   end
 
-  def join
+  def addfavor
     @movie = Movie.find(params[:id])
-    if !current_user.is_member_of?(@movie)
+    if !current_user.add_favor?(@movie)
       current_user.join!(@movie)
-      flash[:notice] = "已加入群组!"
+      flash[:notice] = "已收藏这部电影!"
     else
-      flash[:notice] = "你已是本组成员!"
+      flash[:notice] = "你已收藏了这部电影!"
     end
       redirect_to movie_path(@movie)
   end
 
-  def quit
+  def quitfavor
     @movie = Movie.find(params[:id])
-    if current_user.is_member_of?(@movie)
+    if current_user.add_favor?(@movie)
       current_user.quit!(@movie)
-      flash[:notice] ="已退出群组！"
+      flash[:notice] ="已删除收藏"
     else
-      flash[:notice] ="你不是群组成员！"
+      flash[:notice] ="你还未收藏这部电影！"
     end
       redirect_to movie_path(@movie)
   end

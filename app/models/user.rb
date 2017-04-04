@@ -7,18 +7,18 @@ class User < ApplicationRecord
   has_many :movies
   has_many :comments
   has_many :movieusergroups
-  has_many :participated_movies, :through => :movieusergroups, :source => :movie
+  has_many :favored_movies, :through => :movieusergroups, :source => :movie
 
-  def is_member_of?(movie)
-    participated_movies.include?(movie)
+  def add_favor?(movie)
+    favored_movies.include?(movie)
   end
 
   def join!(movie)
-    participated_movies << movie
+    favored_movies << movie
   end
 
   def quit!(movie)
-    participated_movies.delete(movie)
+    favored_movies.delete(movie)
   end
 
 end

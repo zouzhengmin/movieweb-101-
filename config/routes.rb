@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   resources :movies do
     resources :comments
     member do
-      post :join
-      post :quit
+      post :addfavor
+      post :quitfavor
     end
   end
 
