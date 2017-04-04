@@ -1,24 +1,8 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project is the changing from rails101.
+This is a simple movieweb with comment function.
 
-Things you may want to cover:
+User can add movie to his favourite, and remove favourite.
+User can add comments to a movie after he add the movie to his favourite.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
